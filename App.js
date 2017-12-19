@@ -21,13 +21,13 @@ const Tabs = TabNavigator({
   History: {
     screen: ShowDecks,
     navigationOptions: {
-      tabBarLabel: 'Show Decks',
+      tabBarLabel: 'Show All Decks',
     },
   },
   AddEntry: {
     screen: AddDeck,
     navigationOptions: {
-      tabBarLabel: 'Add Deck',
+      tabBarLabel: 'Add A Deck',
     },
   },
 }, {

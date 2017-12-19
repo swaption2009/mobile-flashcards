@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Input from './commons/Input';
+import Button from './commons/Button';
 
 const styles = StyleSheet.create({
   container: {
@@ -14,26 +15,24 @@ const styles = StyleSheet.create({
 
 class AddDeck extends Component {
   state = {
-    question: '',
-    answer: '',
+    title: '',
   };
+
+  onButtonPress = (e) => {
+    console.log(e);
+  }
 
   render() {
     return (
       <View style={styles.container}>
         <Text>Enter a pair of Q&A</Text>
         <Input
-          placeholder="enter a question"
-          label="Question"
-          value={this.state.question}
-          onChangeText={question => this.setState({ question })}
+          placeholder="enter a title"
+          label="Deck Title"
+          value={this.state.title}
+          onChangeText={title => this.setState({ title })}
         />
-        <Input
-          placeholder="enter the answer"
-          label="Answer"
-          value={this.state.answer}
-          onChangeText={answer => this.setState({ answer })}
-        />
+        <Button onPress={() => this.onButtonPress(this.state.title)}>Save</Button>
       </View>
     );
   }
