@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { YELLOW } from 'react-native-material-color';
 import { TabNavigator, StackNavigator } from 'react-navigation';
@@ -68,17 +68,15 @@ const composeEnhancers = (
 
 const store = createStore(reducer, composeEnhancers(applyMiddleware(logger)));
 
-class App extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <View style={styles.container}>
-          <Header headerText="Mobile Flashcard" />
-          <MainNavigator />
-        </View>
-      </Provider>
-    );
-  }
-}
+const App = () => {
+  return (
+    <Provider store={store}>
+      <View style={styles.container}>
+        <Header headerText="Mobile Flashcard" />
+        <MainNavigator />
+      </View>
+    </Provider>
+  );
+};
 
 export default App;

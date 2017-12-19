@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
 import Card from './commons/Card';
-import data from './helpers/data';
 
 const styles = StyleSheet.create({
   container: {
@@ -13,23 +14,30 @@ const styles = StyleSheet.create({
   },
 });
 
-class ShowDecks extends Component {
-  render() {
-    const dataArr = _.toArray(data);
+const ShowDecks = (props) => {
+  const { decks } = props;
 
-    return (
-      <View style={styles.container}>
-        { !dataArr ? (
-          <Text>Please create a deck</Text>
-        ) : (
-          <View style={styles.container}>
-            <Text>Learning Decks</Text>
-            <Card data={dataArr} />
-          </View>
-        )}
-      </View>
-    );
-  }
+  return (
+    <View style={styles.container}>
+      { !decks ? (
+        <Text>Please create a deck</Text>
+      ) : (
+        <View style={styles.container}>
+          <Text>Learning Decks</Text>
+          <Card data={decks} />
+        </View>
+      )}
+    </View>
+  );
+};
+
+function mapStateToProps(state) {
+  const decks = _.toArray(state.InitialState);
+  return { decks };
 }
 
-export default ShowDecks;
+ShowDecks.PropTypes = {
+  decks: PropTypes.array.isRequired,
+};
+
+export default connect(mapStateToProps)(ShowDecks);

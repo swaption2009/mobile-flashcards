@@ -11,7 +11,6 @@ export default function flashcards(state = { InitialState }, action) {
         ...action,
       };
     default:
-      console.log(state);
       return state;
   }
 }
