@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import { TabNavigator, StackNavigator } from 'react-navigation';
+import { StyleSheet, View } from 'react-native';
 import { YELLOW } from 'react-native-material-color';
+import { TabNavigator, StackNavigator } from 'react-navigation';
+import { createStore, applyMiddleware, compose } from 'redux';
+import { Provider } from 'react-redux';
+import reducer from './components/reducers';
 import Header from './components/commons/Header';
 import AddDeck from './components/AddDeck';
 import ShowDecks from './components/ShowDecks';
@@ -49,13 +52,31 @@ const MainNavigator = StackNavigator({
   },
 });
 
+const logger = store => next => action => {
+  console.group(action.type);
+  console.info('dispatching', action);
+  const result = next(action);
+  console.log('next state', store.getState());
+  console.groupEnd(action.type);
+  return result;
+}
+
+const composeEnhancers = (
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+  && window.__REDUX_DEVTOOLS_EXTENSION__())
+  || compose;
+
+const store = createStore(reducer, composeEnhancers(applyMiddleware(logger)));
+
 class App extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Header headerText="Mobile Flashcard" />
+      <Provider store={store}>
+        <View style={styles.container}>
+          <Header headerText="Mobile Flashcard" />
           <MainNavigator />
-      </View>
+        </View>
+      </Provider>
     );
   }
 }
