@@ -5,22 +5,20 @@ import PropTypes from 'prop-types';
 const styles = {
   inputStyle: {
     color: '#000',
-    paddingRight: 5,
     paddingLeft: 5,
-    fontSize: 18,
-    lineHeight: 23,
-    flex: 2
+    fontSize: 14,
+    lineHeight: 15,
+    flex: 4,
   },
   labelStyle: {
-    fontSize: 18,
-    paddingLeft: 20,
-    flex: 1
+    fontSize: 14,
+    paddingLeft: 10,
+    flex: 1,
   },
   containerStyle: {
-    height: 40,
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 };
 
@@ -45,7 +43,7 @@ const Input = ({ label, value, onChangeText, placeholder }) => {
 Input.propTypes = {
   label: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  onChangeText: PropTypes.string.isRequired,
+  onChangeText: PropTypes.func.isRequired,
   placeholder: PropTypes.string.isRequired,
 };
 

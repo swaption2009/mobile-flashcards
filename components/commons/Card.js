@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import CardDetail from './CardDetail';
 
@@ -32,7 +32,7 @@ showData = (data) => {
 };
 
 const Card = (props) => {
-  const { data } = props
+  const { data } = props;
 
   return (
     <View style={styles.containerStyle}>
