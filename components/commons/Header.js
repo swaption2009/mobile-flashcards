@@ -1,10 +1,11 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
+import { BLUE, WHITE } from 'react-native-material-color';
 
 const styles = {
   viewStyle: {
-    backgroundColor: '#F8F8F8',
+    backgroundColor: BLUE[400],
     justifyContent: 'center',
     alignItems: 'center',
     height: 60,
@@ -17,6 +18,7 @@ const styles = {
   },
   textStyle: {
     fontSize: 20,
+    color: WHITE,
   },
 };
 
