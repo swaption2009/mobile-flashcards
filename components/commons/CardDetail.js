@@ -1,10 +1,10 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 
 const styles = {
   containerStyle: {
-    borderBottomWidth: 1,
+    borderBottomWidth: 2,
     padding: 5,
     backgroundColor: '#fff',
     justifyContent: 'flex-start',
@@ -14,16 +14,17 @@ const styles = {
   },
 };
 
-const CardSection = (props) => {
+const CardDetail = (props) => {
   return (
     <View style={styles.containerStyle}>
-      {props.children}
+      <Text>{props.title}</Text>
     </View>
   );
 };
 
-CardSection.propTypes = {
-  children: PropTypes.string.isRequired,
+CardDetail.propTypes = {
+  title: PropTypes.string.isRequired,
 };
 
-export default CardSection;
+export default CardDetail;
+

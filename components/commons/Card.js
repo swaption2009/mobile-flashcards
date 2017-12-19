@@ -1,6 +1,7 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
+import CardDetail from './CardDetail';
 
 const styles = {
   containerStyle: {
@@ -19,16 +20,32 @@ const styles = {
   },
 };
 
+showData = (data) => {
+  return data.map(e => {
+    return (
+      <CardDetail
+        key={e.title}
+        title={e.title}
+      />
+    );
+  });
+};
+
 const Card = (props) => {
+  const { data } = props
+
   return (
     <View style={styles.containerStyle}>
-      {props.children}
+      {this.showData(data)}
     </View>
   );
 };
 
 Card.propTypes = {
-  children: PropTypes.string,
+  data: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string,
+    questions: PropTypes.Array,
+  })).isRequired,
 };
 
 export default Card;

@@ -8,7 +8,7 @@ const styles = {
     backgroundColor: BLUE[400],
     justifyContent: 'center',
     alignItems: 'center',
-    height: 60,
+    height: 100,
     paddingTop: 15,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
