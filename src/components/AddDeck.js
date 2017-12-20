@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { StyleSheet, Text, View } from 'react-native';
 import Input from './commons/Input';
 import Button from './commons/Button';
@@ -20,13 +21,15 @@ class AddDeck extends Component {
     title: '',
   };
 
-  onButtonPress = (e) => {
-    if (!e) {
+  onButtonPress = (title) => {
+    if (!title) {
       console.log('Field cannot be blank!');
     } else {
-      createDeck(e); // save to Redux store
-      saveDeck(e); // save to AsyncStorage
-      // TODO send notification
+      this.props.createDeck(title);
+      console.log('save to Redux store');
+      saveDeck(title);
+      console.log('save to AsyncStorage');
+      // TODO push notification
       // TODO back to ShowDecks component
     }
   };
@@ -47,4 +50,12 @@ class AddDeck extends Component {
   }
 }
 
-export default AddDeck;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createDeck: (title) => {
+      dispatch(createDeck(title));
+    },
+  };
+};
+
+export default connect(null, mapDispatchToProps)(AddDeck);

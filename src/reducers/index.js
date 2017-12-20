@@ -1,16 +1,15 @@
-import { CREATE_DECK } from '../actions/index';
-import data from '../helpers/data';
+import { CREATE_DECK } from '../actions';
+import decks from '../helpers/data';
 
-const InitialState = data;
-
-export default function flashcards(state = { InitialState }, action) {
+export default function flashcards(state = decks, action) {
   switch (action.type) {
     case CREATE_DECK:
       return {
         ...state,
-        ...action,
+        [action.payload]: { title: action.payload, questions: [] },
       };
     default:
+      console.log('default', state);
       return state;
   }
 }

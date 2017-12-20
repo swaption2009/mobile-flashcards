@@ -15,16 +15,14 @@ const styles = StyleSheet.create({
 });
 
 const ShowDecks = (props) => {
-  const { decks } = props;
-
   return (
     <View style={styles.container}>
-      { !decks ? (
+      { !props.decks ? (
         <Text>Please create a deck</Text>
       ) : (
         <View style={styles.container}>
           <Text>Learning Decks</Text>
-          <Card data={decks} />
+          <Card data={props.decks} />
         </View>
       )}
     </View>
@@ -32,12 +30,8 @@ const ShowDecks = (props) => {
 };
 
 function mapStateToProps(state) {
-  const decks = _.toArray(state.InitialState);
+  const decks = _.toArray(state);
   return { decks };
 }
-
-ShowDecks.PropTypes = {
-  decks: PropTypes.array.isRequired,
-};
 
 export default connect(mapStateToProps)(ShowDecks);

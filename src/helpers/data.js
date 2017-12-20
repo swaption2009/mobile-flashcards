@@ -1,4 +1,4 @@
-const data =
+const decks =
   {
     React: {
       title: 'React',
@@ -24,4 +24,4 @@ const data =
     },
   };
 
-export default data;
+export default decks;

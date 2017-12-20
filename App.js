@@ -3,8 +3,9 @@ import { StyleSheet, View } from 'react-native';
 import { YELLOW } from 'react-native-material-color';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import Reactotron from 'reactotron-react-native';
-import { createStore, applyMiddleware, compose } from 'redux';
+import { applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 import reducer from './src/reducers';
 import Header from './src/components/commons/Header';
 import AddDeck from './src/components/AddDeck';
@@ -54,21 +55,7 @@ const MainNavigator = StackNavigator({
   },
 });
 
-const logger = store => next => action => {
-  console.group(action.type);
-  console.info('dispatching', action);
-  const result = next(action);
-  console.log('next state', store.getState());
-  console.groupEnd(action.type);
-  return result;
-}
-
-const composeEnhancers = (
-  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-  && window.__REDUX_DEVTOOLS_EXTENSION__())
-  || compose;
-
-const store = Reactotron.createStore(reducer, composeEnhancers(applyMiddleware(logger)));
+const store = Reactotron.createStore(reducer, applyMiddleware(thunk));
 
 const App = () => {
   return (
