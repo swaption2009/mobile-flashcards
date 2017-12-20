@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Input from './commons/Input';
 import Button from './commons/Button';
+import saveDeck from '../helpers/Api';
+import createDeck from '../actions';
 
 const styles = StyleSheet.create({
   container: {
@@ -19,8 +21,15 @@ class AddDeck extends Component {
   };
 
   onButtonPress = (e) => {
-    console.log(e);
-  }
+    if (!e) {
+      console.log('Field cannot be blank!');
+    } else {
+      createDeck(e); // save to Redux store
+      saveDeck(e); // save to AsyncStorage
+      // TODO send notification
+      // TODO back to ShowDecks component
+    }
+  };
 
   render() {
     return (

@@ -1,4 +1,4 @@
-import { CREATE_DECK } from '../actions';
+import { CREATE_DECK } from '../actions/index';
 import data from '../helpers/data';
 
 const InitialState = data;

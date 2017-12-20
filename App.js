@@ -2,13 +2,15 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { YELLOW } from 'react-native-material-color';
 import { TabNavigator, StackNavigator } from 'react-navigation';
+import Reactotron from 'reactotron-react-native';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
-import reducer from './components/reducers';
-import Header from './components/commons/Header';
-import AddDeck from './components/AddDeck';
-import ShowDecks from './components/ShowDecks';
-import AddQuestion from './components/AddQuestion';
+import reducer from './src/reducers';
+import Header from './src/components/commons/Header';
+import AddDeck from './src/components/AddDeck';
+import ShowDecks from './src/components/ShowDecks';
+import AddQuestion from './src/components/AddQuestion';
+import './ReactotronConfig';
 
 const styles = StyleSheet.create({
   container: {
@@ -66,7 +68,7 @@ const composeEnhancers = (
   && window.__REDUX_DEVTOOLS_EXTENSION__())
   || compose;
 
-const store = createStore(reducer, composeEnhancers(applyMiddleware(logger)));
+const store = Reactotron.createStore(reducer, composeEnhancers(applyMiddleware(logger)));
 
 const App = () => {
   return (
