@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 
 const styles = {
@@ -14,16 +14,27 @@ const styles = {
   },
 };
 
+onCardDetailPress = (navigation, title) => {
+  // console.log(navigation);
+  navigation.navigate('AddQuestion', { title });
+}
+
 const CardDetail = (props) => {
   return (
-    <View style={styles.containerStyle}>
-      <Text>{props.title}</Text>
-    </View>
+    <TouchableOpacity onPress={() => this.onCardDetailPress(props.navigation, props.title)}>
+      <View style={styles.containerStyle}>
+        <Text>
+          Deck title: {props.title}{'\n'}
+          Number of cards: {props.numCards}
+        </Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 
 CardDetail.propTypes = {
   title: PropTypes.string.isRequired,
+  numCards: PropTypes.number.isRequired,
 };
 
 export default CardDetail;

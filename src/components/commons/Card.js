@@ -21,23 +21,26 @@ const styles = {
   },
 };
 
-showData = (data) => {
+showData = (data, navigation) => {
   return data.map(e => {
     return (
       <CardDetail
         key={e.title}
         title={e.title}
+        numCards={e.questions.length}
+        navigation={navigation}
       />
     );
   });
 };
 
 const Card = (props) => {
-  const { data } = props;
+  const { data, navigation } = props;
+  console.log(navigation);
 
   return (
     <View style={styles.containerStyle}>
-      {this.showData(data)}
+      {this.showData(data, navigation)}
     </View>
   );
 };

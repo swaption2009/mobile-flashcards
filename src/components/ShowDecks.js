@@ -20,7 +20,10 @@ const ShowDecks = (props) => {
         <Text style={styles.text}>Please create a deck</Text>
       ) : (
         <View>
-          <Card data={props.decks} />
+          <Card
+            data={props.decks}
+            navigation={props.navigation}
+          />
         </View>
       )}
     </View>
