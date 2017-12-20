@@ -1,5 +1,5 @@
 import { CREATE_DECK } from '../actions';
-import decks from '../helpers/data';
+import decks from '../helpers/Data';
 
 export default function flashcards(state = decks, action) {
   switch (action.type) {
@@ -9,7 +9,6 @@ export default function flashcards(state = decks, action) {
         [action.payload]: { title: action.payload, questions: [] },
       };
     default:
-      console.log('default', state);
       return state;
   }
 }

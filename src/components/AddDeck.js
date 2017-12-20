@@ -23,14 +23,16 @@ class AddDeck extends Component {
 
   onButtonPress = (title) => {
     if (!title) {
-      console.log('Field cannot be blank!');
+      alert('Field cannot be blank.');
     } else {
       this.props.createDeck(title);
-      console.log('save to Redux store');
+      // console.log('new deck is saved to Redux store');
       saveDeck(title);
-      console.log('save to AsyncStorage');
-      // TODO push notification
-      // TODO back to ShowDecks component
+      // console.log('new deck is saved to AsyncStorage');
+      this.setState({ title: '' });
+      // console.log('Add deck input field is cleared');
+      // navigate back to ShowDecks component
+      this.props.navigation.navigate('ShowDecks');
     }
   };
 

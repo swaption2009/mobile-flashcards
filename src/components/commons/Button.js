@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, TouchableNativeFeedback } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 
 const styles = {
@@ -14,10 +14,13 @@ const styles = {
   buttonStyle: {
     flex: 1,
     alignSelf: 'stretch',
+    justifyContent: 'center',
     backgroundColor: '#fff',
     borderRadius: 5,
     borderWidth: 1,
     borderColor: '#007aff',
+    marginTop: 50,
+    marginBottom: 150,
     marginLeft: 5,
     marginRight: 5,
   },
@@ -27,16 +30,17 @@ const Button = ({ onPress, children }) => {
   const { buttonStyle, textStyle } = styles;
 
   return (
-    <TouchableNativeFeedback onPress={onPress} style={buttonStyle}>
+    <TouchableOpacity onPress={onPress} style={buttonStyle}>
       <Text style={textStyle}>
         {children}
       </Text>
-    </TouchableNativeFeedback>
+    </TouchableOpacity>
   );
 };
 
 Button.propTypes = {
   children: PropTypes.string.isRequired,
+  onPress: PropTypes.func.isRequired,
 };
 
 export default Button;

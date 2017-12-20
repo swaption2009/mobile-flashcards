@@ -52,6 +52,15 @@ const MainNavigator = StackNavigator({
   },
   AddQuestion: {
     screen: AddQuestion,
+    navigationOptions: {
+      title: 'Add Q&A',
+    },
+  },
+  ShowDecks: {
+    screen: ShowDecks,
+    navigationOptions: {
+      title: 'Showing All Decks',
+    },
   },
 });
 

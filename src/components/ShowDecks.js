@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import _ from 'lodash';
 import Card from './commons/Card';
 
@@ -9,8 +8,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: 'stretch',
+    justifyContent: 'flex-start',
   },
 });
 
@@ -18,10 +17,9 @@ const ShowDecks = (props) => {
   return (
     <View style={styles.container}>
       { !props.decks ? (
-        <Text>Please create a deck</Text>
+        <Text style={styles.text}>Please create a deck</Text>
       ) : (
-        <View style={styles.container}>
-          <Text>Learning Decks</Text>
+        <View>
           <Card data={props.decks} />
         </View>
       )}
