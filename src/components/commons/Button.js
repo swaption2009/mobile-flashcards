@@ -20,7 +20,7 @@ const styles = {
     borderWidth: 1,
     borderColor: '#007aff',
     marginTop: 50,
-    marginBottom: 150,
+    marginBottom: 100,
     marginLeft: 5,
     marginRight: 5,
   },

@@ -15,9 +15,8 @@ const styles = {
 };
 
 onCardDetailPress = (navigation, title) => {
-  // console.log(navigation);
-  navigation.navigate('AddQuestion', { title });
-}
+  navigation.navigate('ShowDetail', { title });
+};
 
 const CardDetail = (props) => {
   return (

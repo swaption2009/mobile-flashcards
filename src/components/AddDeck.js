@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Input from './commons/Input';
 import Button from './commons/Button';
 import saveDeck from '../helpers/Api';
@@ -39,10 +39,9 @@ class AddDeck extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Enter a pair of Q&A</Text>
         <Input
           placeholder="enter a title"
-          label="Deck Title"
+          label="New Deck Title"
           value={this.state.title}
           onChangeText={title => this.setState({ title })}
         />

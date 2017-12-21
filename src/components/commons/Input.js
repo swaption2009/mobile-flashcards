@@ -8,7 +8,7 @@ const styles = {
     paddingLeft: 5,
     fontSize: 14,
     lineHeight: 15,
-    flex: 4,
+    flex: 2,
   },
   labelStyle: {
     fontSize: 14,

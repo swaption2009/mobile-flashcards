@@ -10,7 +10,9 @@ import reducer from './src/reducers';
 import Header from './src/components/commons/Header';
 import AddDeck from './src/components/AddDeck';
 import ShowDecks from './src/components/ShowDecks';
-import AddQuestion from './src/components/AddQuestion';
+import ShowDetail from './src/components/DeckDetail';
+import AddQuestions from './src/components/AddQuestions';
+import StartQuiz from './src/components/StartQuiz';
 import './ReactotronConfig';
 
 const styles = StyleSheet.create({
@@ -50,16 +52,28 @@ const MainNavigator = StackNavigator({
   Home: {
     screen: Tabs,
   },
-  AddQuestion: {
-    screen: AddQuestion,
-    navigationOptions: {
-      title: 'Add Q&A',
-    },
-  },
   ShowDecks: {
     screen: ShowDecks,
     navigationOptions: {
       title: 'Showing All Decks',
+    },
+  },
+  ShowDetail: {
+    screen: ShowDetail,
+    navigationOptions: {
+      title: 'Showing Deck Detail',
+    },
+  },
+  AddQuestions: {
+    screen: AddQuestions,
+    navigationOptions: {
+      title: 'Add Q&A Pairs',
+    },
+  },
+  StartQuiz: {
+    screen: StartQuiz,
+    navigationOptions: {
+      title: "Let's Play a Quiz",
     },
   },
 });

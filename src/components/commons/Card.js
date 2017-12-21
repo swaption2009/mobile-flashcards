@@ -36,7 +36,6 @@ showData = (data, navigation) => {
 
 const Card = (props) => {
   const { data, navigation } = props;
-  console.log(navigation);
 
   return (
     <View style={styles.containerStyle}>
