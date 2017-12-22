@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Button from './commons/Button';
 import PropTypes from 'prop-types';
+import Button from './commons/Button';
 
 const styles = StyleSheet.create({
   container: {
@@ -22,12 +22,11 @@ const styles = StyleSheet.create({
 });
 
 navigateDeck = (componentName, props) => {
-  console.log(props.navigation);
-  props.navigation.navigate(componentName);
+  props.navigation.navigate(componentName, props);
 };
 
 const ShowDetail = (props) => {
-  const { title } = props.navigation.state.params
+  const { title } = props.navigation.state.params;
 
   return (
     <View style={styles.container}>
@@ -36,7 +35,7 @@ const ShowDetail = (props) => {
         style={styles.buttonStyle}
         onPress={() => this.navigateDeck('AddQuestions', props)}
       >
-        Add Card
+        Add Q&A Cards
       </Button>
       <Button
         style={styles.buttonStyle}
@@ -47,9 +46,5 @@ const ShowDetail = (props) => {
     </View>
   );
 };
-
-ShowDetail.PropTypes = {
-  title: PropTypes.string.isRequired,
-}
 
 export default ShowDetail;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { StyleSheet, View } from 'react-native';
 import Input from './commons/Input';
 import Button from './commons/Button';
@@ -25,6 +26,7 @@ class AddDeck extends Component {
     if (!title) {
       alert('Field cannot be blank.');
     } else {
+      // console.log(title);
       this.props.createDeck(title);
       // console.log('new deck is saved to Redux store');
       saveDeck(title);
@@ -57,6 +59,10 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(createDeck(title));
     },
   };
+};
+
+AddDeck.propTypes = {
+  createDeck: PropTypes.func.isRequired,
 };
 
 export default connect(null, mapDispatchToProps)(AddDeck);
