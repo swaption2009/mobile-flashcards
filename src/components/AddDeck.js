@@ -34,7 +34,7 @@ class AddDeck extends Component {
       this.setState({ title: '' });
       // console.log('Add deck input field is cleared');
       // navigate back to ShowDecks component
-      this.props.navigation.navigate('ShowDecks');
+      this.props.navigation.navigate('Home');
     }
   };
 

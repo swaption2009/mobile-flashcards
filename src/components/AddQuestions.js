@@ -35,7 +35,7 @@ class AddQuestions extends Component {
       state.question,
       state.answer,
     );
-    this.props.navigation.navigate('ShowDecks');
+    this.props.navigation.navigate('Home');
   };
 
   render() {
@@ -53,9 +53,7 @@ class AddQuestions extends Component {
           value={this.state.answer}
           onChangeText={answer => this.setState({ answer })}
         />
-        <Button
-          onPress={() => this.onSavedQuestion(this.state)}
-        >
+        <Button onPress={() => this.onSavedQuestion(this.state)} >
           Save
         </Button>
       </View>

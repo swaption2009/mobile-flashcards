@@ -7,7 +7,6 @@ import {
 export default function flashcards(state = decks, action) {
   switch (action.type) {
     case ADD_CARD:
-      console.log(state[action.title]);
       return {
         ...state,
         [action.title]:
@@ -21,7 +20,6 @@ export default function flashcards(state = decks, action) {
           },
       };
     case CREATE_DECK:
-      // console.log(state);
       return {
         ...state,
         [action.payload]: { title: action.payload, questions: [] },

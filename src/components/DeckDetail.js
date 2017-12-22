@@ -47,4 +47,8 @@ const ShowDetail = (props) => {
   );
 };
 
+ShowDetail.propTypes = {
+  navigation: PropTypes.object.isRequired,
+};
+
 export default ShowDetail;
