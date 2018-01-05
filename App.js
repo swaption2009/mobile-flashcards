@@ -58,6 +58,12 @@ const MainNavigator = StackNavigator({
       title: 'Showing All Decks',
     },
   },
+  AddDeck: {
+    screen: AddDeck,
+    navigationOptions: {
+      title: 'Add a Deck',
+    },
+  },
   ShowDetail: {
     screen: ShowDetail,
     navigationOptions: {
