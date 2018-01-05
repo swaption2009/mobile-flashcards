@@ -7,6 +7,10 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import {
+  clearLocalNotification,
+  setLocalNotification,
+} from '../helpers/Notifications';
 
 const styles = {
   textStyle: {
@@ -75,6 +79,9 @@ class StartQuiz extends Component {
   };
 
   pickQuestion = (questions, index, length) => {
+    clearLocalNotification()
+      .then(setLocalNotification);
+
     if (index <= length - 1) {
       return questions[index];
     } else {

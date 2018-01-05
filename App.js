@@ -1,11 +1,14 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { YELLOW } from 'react-native-material-color';
-import { TabNavigator, StackNavigator } from 'react-navigation';
-import Reactotron from 'reactotron-react-native';
+import React, { Component } from 'react';
 import { applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+import { StyleSheet, View } from 'react-native';
+import { YELLOW } from 'react-native-material-color';
+import {
+  TabNavigator,
+  StackNavigator } from 'react-navigation';
+import './ReactotronConfig';
+import Reactotron from 'reactotron-react-native';
 import reducer from './src/reducers';
 import Header from './src/components/commons/Header';
 import AddDeck from './src/components/AddDeck';
@@ -13,7 +16,7 @@ import ShowDecks from './src/components/ShowDecks';
 import ShowDetail from './src/components/DeckDetail';
 import AddQuestions from './src/components/AddQuestions';
 import StartQuiz from './src/components/StartQuiz';
-import './ReactotronConfig';
+import { setLocalNotification } from './src/helpers/Notifications';
 
 const styles = StyleSheet.create({
   container: {
@@ -86,15 +89,21 @@ const MainNavigator = StackNavigator({
 
 const store = Reactotron.createStore(reducer, applyMiddleware(thunk));
 
-const App = () => {
-  return (
-    <Provider store={store}>
-      <View style={styles.container}>
-        <Header headerText="Mobile Flashcard" />
-        <MainNavigator />
-      </View>
-    </Provider>
-  );
-};
+class App extends Component {
+  componentDidMount() {
+    setLocalNotification();
+  }
+
+  render() {
+    return (
+      <Provider store={store}>
+        <View style={styles.container}>
+          <Header headerText="Mobile Flashcard" />
+          <MainNavigator />
+        </View>
+      </Provider>
+    );
+  }
+}
 
 export default App;
