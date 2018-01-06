@@ -140,7 +140,7 @@ class StartQuiz extends Component {
             <Text style={styles.answerStyle}>Show Answer</Text>
           </TouchableOpacity>
 
-          { this.state.showAnswer &&
+          {this.state.showAnswer &&
           <View>
             <Text style={styles.questionStyle}>
               Answer: {shownQuestion.answer}
@@ -165,7 +165,7 @@ class StartQuiz extends Component {
           />
         </View>
         }
-        { this.state.restartButton &&
+        {this.state.restartButton &&
         <View>
           <Button
             onPress={() => this.onRestartButton('correct')}
@@ -187,8 +187,12 @@ class StartQuiz extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
+  let checkTitle = ownProps.navigation.state.params.navigation.state.params.title;
+  if (!checkTitle) {
+    checkTitle = ownProps.navigation.state.params.navigation.state.params;
+  }
   return {
-    quiz: state[ownProps.navigation.state.params.navigation.state.params.title],
+    quiz: state[checkTitle],
   };
 };
 

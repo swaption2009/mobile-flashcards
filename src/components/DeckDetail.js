@@ -21,25 +21,31 @@ const styles = StyleSheet.create({
   },
 });
 
-navigateDeck = (componentName, props) => {
-  props.navigation.navigate(componentName, props);
+navigateDeck = (componentName, props, title) => {
+  props.navigation.navigate(componentName, props, title);
 };
 
 const ShowDetail = (props) => {
-  const { title } = props.navigation.state.params;
+  const checkTitle = props.navigation.state.params.title;
+  let title;
+  if (!checkTitle) {
+    title = props.navigation.state.params;
+  } else {
+    title = checkTitle;
+  }
 
   return (
     <View style={styles.container}>
       <Text style={styles.textStyle}>{title}</Text>
       <Button
         style={styles.buttonStyle}
-        onPress={() => this.navigateDeck('AddQuestions', props)}
+        onPress={() => this.navigateDeck('AddQuestions', props, title)}
       >
         Add Q&A Cards
       </Button>
       <Button
         style={styles.buttonStyle}
-        onPress={() => this.navigateDeck('StartQuiz', props)}
+        onPress={() => this.navigateDeck('StartQuiz', props, title)}
       >
         Start Quiz
       </Button>

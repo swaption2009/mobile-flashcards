@@ -36,6 +36,7 @@ const ShowDecks = (props) => {
         <View>
           <Card
             data={props.decks}
+            title={props.navigation.state.params}
             navigation={props.navigation}
           />
         </View>

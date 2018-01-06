@@ -24,8 +24,12 @@ class AddQuestions extends Component {
   };
 
   componentDidMount() {
+    let checkTitle = this.props.navigation.state.params.navigation.state.params.title;
+    if (!checkTitle) {
+      checkTitle = this.props.navigation.state.params.navigation.state.params;
+    }
     this.setState({
-      title: this.props.navigation.state.params.navigation.state.params.title,
+      title: checkTitle,
     });
   }
 
@@ -35,7 +39,7 @@ class AddQuestions extends Component {
       state.question,
       state.answer,
     );
-    this.props.navigation.navigate('Home');
+    this.props.navigation.goBack(null);
   };
 
   render() {
